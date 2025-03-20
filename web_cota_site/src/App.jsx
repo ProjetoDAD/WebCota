@@ -18,6 +18,9 @@ export function NavBar() {
             </div>;
 }
 export function ColocarImagem(){
+  function texto(){
+    
+  }
     return  <div>
                 <div id="imagem">
                     <img src={imagem}></img>
@@ -60,3 +63,45 @@ export function TreinarInvestimento(){
     </div>
   </div>
 }
+export function SimularInvestimento() {
+  return <div id="formsSimulacao">
+      <div id="formulario">
+        <form>
+          <div id="tipoInvest">
+            <ul>
+              <li>
+                <input type="radio" name="tipoInvest" value="LCI/LCA" />
+                <label id="opcao1"><a href="#opcao1">LCI/LCA</a></label>
+              </li>
+              <li>
+                <input type="radio" name="tipoInvest" value="CDB" />
+                <label id="opcao2"><a href="#opcao2">CDB</a></label>
+              </li>
+              <li>
+                <input type="radio" name="tipoInvest" value="Tesouro Direto" />
+                <label id="opcao3"><a href="#opcao3">Tesouro Direto</a></label>
+              </li>
+            </ul>
+          
+          </div>
+          <div id="inputs">
+            <label htmlFor="investir">Quanto gostaria de investir?</label> 
+            <input type="number" id="investir" name="investir" />
+
+            <label htmlFor="deposito">Quanto gostaria de depositar por mês?</label> 
+            <input type="number" id="deposito" name="deposito" />
+
+            <label htmlFor="tempo">Por quanto tempo deixaria o dinheiro investido?</label> 
+            <input type="number" id="tempo" name="tempo" />
+
+            <input type="submit" value="Simular" />
+          </div>
+        </form>
+      </div>
+      <div id="gerarPdf">
+        <h1>Seu PDF</h1>
+      </div>
+    </div>
+}
+
+

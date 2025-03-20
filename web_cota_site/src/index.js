@@ -6,7 +6,8 @@ import { Investimentos, TreinarInvestimento } from './App';
 import nfts from './assets/nfts.svg'
 import efts from './assets/efts.svg'
 import acoes from './assets/acoes.svg'
-import { ColocarImagem, NavBar } from './App';
+import { ColocarImagem, NavBar} from './App';
+import { SimularInvestimento } from './App';
 
 const header = ReactDOM.createRoot(document.getElementById('header'));
 header.render(
@@ -32,4 +33,8 @@ const treinar = ReactDOM.createRoot(document.getElementById('treinarInvestimento
 
 treinar.render(
   <TreinarInvestimento/>
+)
+const simular = ReactDOM.createRoot(document.getElementById("simulacao"))
+simular.render(
+  <SimularInvestimento/>
 )
