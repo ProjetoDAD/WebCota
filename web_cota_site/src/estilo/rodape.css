@@ -1,0 +1,124 @@
+
+.rodape {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .rodape h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .rodape p {
+    font-size: 18px;
+    margin: 10px 0 20px;
+  }
+  
+  .rodape-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .rodape-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button.outline {
+    background: transparent;
+    border: 2px solid black;
+  }
+  
+  button:hover {
+    background: black;
+    color: white;
+  }
+  
+  button.solid {
+    background: black;
+    color: white;
+    border: none;
+  }
+  
+  button.solid:hover {
+    opacity: 0.8;
+  }
+  
+  footer {
+    background-color: white;
+    padding: 40px 20px;
+    text-align: left;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .footer-column h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+  }
+  
+  .footer-column ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  /* Rodapé inferior */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    width: 40px;
+  }
+  
+  .social-icons a {
+    min-width: 100px;
+    margin: 0 5px;
+    border: solid black 2px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+  
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+  }
+  
+  

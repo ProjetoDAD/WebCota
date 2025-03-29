@@ -1,0 +1,72 @@
+
+#invistaSeuJeito{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    h1{
+      font-size: 3vw;
+      color:#0E233E;
+    }
+    #investimentos{
+      display: flex;
+      justify-content: space-evenly;  
+      width: 90vw;
+      .elementos{
+        overflow: hidden;
+        display: flex;
+        width: 25vw;
+        height: 50vh;
+        border: solid black 2px;
+        border-radius: 20px;
+        transition: 0.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+        .informacoes{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          p{
+            overflow-wrap: break-word;
+            width: 80%;
+          }
+          button{
+            width: 120px;
+            height: 30px;
+            border-radius: 10px;
+            color: white;
+            background-color: #0E233E;
+            transition: ease-in-out 0.1s;
+            border: transparent;
+            cursor: pointer;
+          }
+          button:hover{
+            background-color: #358EBA;
+          }
+        }
+      }
+      .elementos:hover{
+        transform: scale(1.1);
+      }
+    }
+  }
+  .a{
+    width: 90%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icone{
+      color: red;
+      margin: 10px;
+    }
+    .icone::before{
+      content: " ";
+      position: absolute;
+      left: 1;
+      background-color: blue;
+      width: 2px;
+      height: 50px;
+      margin-left: -1vw ;
+    }
+  }
