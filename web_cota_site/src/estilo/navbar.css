@@ -1,0 +1,96 @@
+
+html{
+    width: 100vw;
+  }
+  #hamburguer{
+    display: none;
+  }
+  #nav{
+    height: 10vh;
+    background-color: #1B4869;
+    align-items: center;
+    border:solid black 2px;
+    display:flex;
+    justify-content: space-between;
+    position: sticky;
+    img{
+      width: 70px;
+      margin-left: 3%;
+    }
+    ul{
+      width: 30%;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      list-style-type: none;
+      margin: 10px;
+      li{
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        padding-bottom: 4px;
+        cursor: pointer;
+  
+      }
+      li::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: rgb(255, 255, 255);
+        bottom: 0;
+        left: 0;
+        transition:0.3s ease-in-out;
+        transform-origin: left;
+      }
+      
+      li:hover::after {
+        width: 100%;
+        transition:ease-in-out 0.3s;
+        transform-origin: left;
+      }
+    }
+    
+    
+  /* Estilização do texto e imagem na landing page */
+  }
+  #imagemTexto{
+    div{
+      display: flex;
+      justify-content: space-evenly;
+      margin: 20px;
+      #imagem{
+        img{
+          width: 35vw;
+        }
+      }
+      #texto{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1{
+          width: 25vw;
+          font-size: 4.0vw;
+          span{
+            color: #358EBA;
+          }
+        }
+      }
+    }
+  }
+  @media(max-width: 900px){
+    #hamburguer{
+      display: flex;
+    }
+    #nav{
+      ul{
+        .links{
+          
+            display: none;
+          
+        }
+      }
+    }
+  }
+  

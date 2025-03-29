@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import logo from './assets/logo.svg'
-import imagem from './assets/pana.svg'
+import twitter from './assets/Twitter.svg'
+import facebook from './assets/facebook.svg'
+import linkedin from './assets/linkedin.svg'
+import logo_preta from './assets/logo_preta.svg'
 export function NavBar() {
     return <div id="nav">
                 <img src={logo} alt="" />
@@ -17,16 +20,14 @@ export function NavBar() {
                 </ul>
             </div>;
 }
-export function ColocarImagem(){
-  function texto(){
-    
-  }
+export function ColocarImagem({imagem, texto}){
+  
     return  <div>
                 <div id="imagem">
                     <img src={imagem}></img>
                 </div>
                 <div id="texto">
-                    <h1>Simule <span>seus investimentos</span> conosco!</h1>
+                    <h1>{texto}!</h1>
                 </div>
             </div>
 }
@@ -104,4 +105,90 @@ export function SimularInvestimento() {
     </div>
 }
 
+export function InvestimentoLongoPrazo(){
+  return <div class="produtos">
+  <div class="barra">
+    <h2>CDB - Certificado de Depósito Bancário</h2>
+    <div class="barra-exterior">
+      <div class="barra-interior"></div>
+      <p>90/100</p>
+    </div>
+  </div>
+  <div class="text-card">
+    <h3>Title</h3>
+    <p>Please add your content here. Keep it short and simple. And smile.
+      Please add your content here. Keep it short and simple. And smile.
+    </p>
+  </div>
+</div>
+}
 
+export function Rodape(){
+  return <div class="rodape">
+    <h2>Faça parte agora do nosso Projeto</h2>
+    <p>WebCota o melhor treino para o sucesso no investimento</p>
+    <div class="rodape-buttons">
+      <button class="outline">Doação</button>
+      <button class="solid">Cadastrar</button>
+    </div>
+  </div>
+}
+
+export function Footer(){
+  return  <footer>
+            <div class="footer-content">
+              <div class="footer-column">
+                <h3>NAVEGAÇÃO</h3>
+                <ul>
+                  <li>About Us</li>
+                  <li>What We Do</li>
+                  <li>Home</li>
+                  <li>To The Power of 10</li>
+                  <li>Donate</li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3>O QUE NÓS FAZEMOS</h3>
+                <ul>
+                  <li>Encouraging Testing</li>
+                  <li>Strengthening Advocacy</li>
+                  <li>Sharing Information</li>
+                  <li>Building Leadership</li>
+                  <li>Engaging With Global Fund</li>
+                  <li>Shining a Light</li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3>LEGALIDADE</h3>
+                <ul>
+                  <li>General Info</li>
+                  <li>Privacy Policy</li>
+                  <li>Terms of Service</li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3>FALE CONOSCO</h3>
+                <ul>
+                  <li>projetoDAD99@gmail.com</li>
+                  <li>+11 4002-8922</li>
+                  <li>Nós contacte</li>
+                  <li>Suporte</li>
+                  <li>LinkedIn</li>
+                  <li>Twitter</li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="logo">
+                <img class="imagem-contatos" src={logo_preta} alt="WebCota"/>
+                
+              </div>
+              <p>© 2025 WebCota Media. All Rights Reserved.</p>
+              <div class="social-icons">
+                  <a href="#"><img class="imagem-contatos" src={facebook} alt="Facebook"/></a>
+                  <a href="#"><img class="imagem-contatos" src={linkedin} alt="LinkedIn"/></a>
+                  <a href="#"><img class="imagem-contatos" src={twitter}  alt="Twitter"/></a>
+              </div>
+            </div>
+          </footer>
+}
