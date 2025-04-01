@@ -70,3 +70,14 @@
       margin-left: -1vw ;
     }
   }
+  .titulo-section{
+    display: flex;
+    width: 100vw;
+    background-color: aquamarine;
+    height: 35vh;
+    justify-content: flex-end;
+    align-items: center;
+    h1{
+      color: red;
+    }
+  }
