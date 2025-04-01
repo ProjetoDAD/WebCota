@@ -31,7 +31,10 @@ html{
         color: rgb(255, 255, 255);
         padding-bottom: 4px;
         cursor: pointer;
-  
+          .meu-link{
+            color:white;
+            text-decoration: none;
+          }
       }
       li::after {
         content: "";

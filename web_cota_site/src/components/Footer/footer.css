@@ -30,16 +30,16 @@
   
   button.outline {
     background: transparent;
-    border: 2px solid black;
+    border: 2px solid #0E233E;
   }
   
   button:hover {
-    background: black;
+    background:  #0E233E;
     color: white;
   }
   
   button.solid {
-    background: black;
+    background: #0E233E;
     color: white;
     border: none;
   }
@@ -101,7 +101,7 @@
   .social-icons a {
     min-width: 100px;
     margin: 0 5px;
-    border: solid black 2px;
+    /* border: solid black 2px; */
   }
   
   /* Responsividade */
