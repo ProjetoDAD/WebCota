@@ -1,7 +1,5 @@
 import React from "react";
 import imagem from "../../assets/pana.svg"
-import logo from '../../assets/logo.svg'
-import Navbar from "../../components/Navbar/navbar"
 import Footer from "../../components/Footer/footer"
 import nfts from '../../assets/nfts.svg'
 import efts from '../../assets/efts.svg'
@@ -44,7 +42,12 @@ function Card({nome, texto, imagem}) {
 function Investimentos({nome, texto, imagem}){
     return (
     <section id="invistaSeuJeito">
-      <h1>Invista do Seu Jeito</h1>
+      <div id="titulo">
+        <h1>Invista do Seu Jeito</h1>
+        <h3 style={{
+          fontWeight: 200
+        }}>Produtos de renda variável</h3>
+      </div>
       <div id="investimentos">
         <Card nome={"NFT's"} imagem={nfts} texto={"blábláblábláblábláblábláblá blábláblá"}/>
         <Card nome={"EFT's"} imagem={efts} texto={"blábláblábláblábláblábláblá blábláblá"}/>
@@ -83,10 +86,12 @@ function TreinarInvestimento(){
 function SimularInvestimento() {
   return(
   <>
-  <div className="titulo_section">
-    <h1 id="titulo">Faça sua simulação</h1>
-  </div>
-    <p id="subtituloSession">Preencha os campos corretamente</p>
+      <div id="tituloTal">
+        <h1>Faça sua Simulação</h1>
+        <h3 style={{
+          fontWeight: 200
+        }}>Preencha corretamente</h3>
+      </div>
     <section id="simulacao">
         <div id="formsSimulacao">
       <div id="formulario">
@@ -183,7 +188,6 @@ function Rodape(){
 export default function Home(){
     return(
         <>
-            <Navbar logo={logo}/>
             <ColocarImagem imagem={imagem} texto={"Simule seus investimentos conosco"}/>
             <Investimentos/>
             <TreinarInvestimento/>

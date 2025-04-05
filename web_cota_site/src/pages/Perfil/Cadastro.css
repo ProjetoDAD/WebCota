@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 40px;
+  }
+  
+  .image-section {
+    width: 50%;
+  }
+  
+  .cadastro-img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .promo-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .destaque {
+    color: #007bff;
+  }
+  
+  .form-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cadastro-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .cadastro-form input {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    background-color: #d2d0d099;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  #botaoLogout:hover{
+    background-color: tomato;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+  

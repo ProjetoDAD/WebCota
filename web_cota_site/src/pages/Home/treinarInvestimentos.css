@@ -10,7 +10,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      width: 80%;
+      width: 184vh;
       height: 85%;
       border-radius: 20px;
       background-color: #0F1215;
@@ -68,7 +68,6 @@
     /* border: solid red 10px; */
     width: 100vw;
     height: 90vh;
-    justify-content: space-evenly;
     #formsSimulacao{
       display: flex;
       align-items: center;
