@@ -9,6 +9,11 @@
       font-size: 3vw;
       color:#0E233E;
     }
+
+    #titulo{
+      margin-right: 850px;
+    }
+
     #investimentos{
       display: flex;
       justify-content: space-evenly;  

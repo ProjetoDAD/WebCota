@@ -1,0 +1,178 @@
+.perfil-container {
+    width: 90%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .perfil-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 40px;
+    padding-top: 100px;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .perfil-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .perfil-info {
+    font-size: 18px;
+  }
+  
+  .perfil-nav {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .perfil-nav{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 20px 0px 13px 0px;
+    ul{
+        display: flex;
+        justify-content: space-around;
+        color: black;
+        list-style-type: none;
+        margin: 10px 00px 10px 0px;
+        li{
+          position: relative;
+          display: inline-block;
+          text-decoration: none;
+          color: black;
+          padding-bottom: 4px;
+          margin-right: 50px;
+          cursor: pointer;
+            .meu-link{
+              color:black;
+              text-decoration: none;
+            }
+        }
+        li::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 2px;
+          background-color: black;
+          bottom: 0;
+          left: 0;
+          transition:0.3s ease-in-out;
+          transform-origin: left;
+        }
+        
+        li:hover::after {
+          width: 100%;
+          transition:ease-in-out 0.3s;
+          transform-origin: left;
+        }
+        
+      }
+
+    }
+
+    .info-privada> form{
+        margin-top:35px ;
+    }
+
+    .perfil-nav ul li.active::after {
+        width: 100%; 
+        height: 2px;
+        background-color: black;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: none; 
+      }
+      
+  
+  .perfil-config {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    width: 50%;
+    p{
+        margin-top:35px
+    }
+  }
+
+  #botao{
+    margin-top: 10px;
+  }
+
+  #botaoLogout{
+    position: relative;
+    bottom: 500px;
+    left: 177vh;
+  }
+  
+  .info-privada {
+    width: 45%;
+  }
+
+  .info-privada>h2{
+    font-size: small;
+  }
+  
+  input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.5s;
+    background-color: white;
+  }
+  
+  .status-button {
+    background-color: green;
+    color: white;
+  }
+  
+  .verify-button {
+    background-color: rgb(255, 255, 255);
+    color: white;
+  }
+
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 5px solid #fff;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+

@@ -52,8 +52,10 @@
       color: white;
     }
   }
-  .titulo{
-    font-size: 3vw;
-    color:#0E233E;
+
+  #tituloTal{
+    margin-left: 130px ;
+    margin-top: 70px;
+    margin-bottom: 20px;
   }
   
