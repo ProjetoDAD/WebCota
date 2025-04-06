@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCookie } from "../hooks/UseAuth";
+import { getCookie, setCookie } from "../hooks/UseAuth";
 import "./Perfil.css";
 import avatarImagem from "../../assets/avatar.svg"; 
 import eyeIcon from '../../assets/eye.svg';
 import eyeOffIcon from '../../assets/eyeOff.svg';
 import logout from "../../assets/logOut.svg";
+import LoadingPopup from "../../components/Context/LoadingPopup";
 
 function Perfil() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState("Dados");
+  const [loading, setLoading] = useState(false); 
 
   const [formData, setFormData] = useState({
     senha: "",
@@ -23,7 +25,7 @@ function Perfil() {
   useEffect(() => {
     const loggedUser_Cookie = getCookie("user");
     if (!loggedUser_Cookie) {
-      navigate("/login"); 
+      navigate("/login");
     } else {
       try {
         const loggedUser = JSON.parse(loggedUser_Cookie);
@@ -37,10 +39,11 @@ function Perfil() {
         });
       } catch (error) {
         console.error("Erro ao analisar o cookie do usuário:", error);
-        navigate("/login"); 
+        navigate("/login");
       }
     }
-  }, [navigate]);
+  }, []); 
+  
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -48,37 +51,64 @@ function Perfil() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true)
 
+    const userCookie = getCookie("user");
+    if (!userCookie) return;
+  
+    const user = JSON.parse(userCookie);
+  
+    const updatedUser = {
+      ...user,
+      senha: formData.senha,
+      email: formData.email,
+      celular: formData.celular,
+      nomeUsuario: formData.nomeUsuario,
+    };
+  
     try {
-      const response = await fetch("http://localhost:8080/users/atualizar", {
+      const response = await fetch("https://webcotabackend.onrender.com/users/atualizar", {
         method: "PUT",
         headers: {
           "id": formData.id,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedUser),
         credentials: "include"
       });
-
-      window.location.reload(); 
-
-
-      if (!response.ok) {
-        throw new Error("Erro ao atualizar o perfil");
+  
+      if (response.ok) {
+        setCookie("user", JSON.stringify(updatedUser), 7);
+  
+        const newUser = JSON.parse(getCookie("user"));
+  
+        setUser(newUser);
+        setFormData({
+          id: newUser.id || "",
+          senha: newUser.senha || "",
+          email: newUser.email || "",
+          celular: newUser.celular || "",
+          nomeUsuario: newUser.nomeUsuario || "",
+        });
+  
+      } else {
+        const errorData = await response.json();
+        console.error("Erro ao atualizar perfil:", errorData.message);
       }
-
-      const updatedUser = await response.json();
-      setUser(updatedUser);
-      setActiveTab("Dados"); 
-      alert("Perfil atualizado com sucesso!");
     } catch (error) {
-      console.error(error);
-      alert("Falha ao atualizar perfil");
+      console.error("Erro na requisição:", error);
+      alert("Erro na requisição ao atualizar o perfil.");
+    } finally {
+      setLoading(false)
     }
   };
+  
+  
+  
 
   return (
     <div className="perfil-container">
+    {loading && <LoadingPopup mensagem="Atualizando perfil..." />}
       <div className="perfil-header">
         <img src={avatarImagem} alt="Avatar" className="perfil-avatar" />
         <div className="perfil-info">

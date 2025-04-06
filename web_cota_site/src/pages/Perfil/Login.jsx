@@ -13,7 +13,7 @@ export function Login() {
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false); // 🔴 Agora a variável está inicializada antes de ser usada
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (event) => {
     setFormData({
