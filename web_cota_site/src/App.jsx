@@ -6,8 +6,9 @@ import Graficos from "./pages/Graficos/graficos";
 import Perfil from "./pages/Perfil/Perfil";
 import NavBar from "./components/Navbar/navbar";
 import Cadastro from "./pages/Perfil/Cadastro";
-import Login from './pages/Perfil/Login'
+import Login from "./pages/Perfil/Login"
 import Logout from "./pages/Perfil/Logout";
+import AreaRestrita from "./pages/Admin/AreaRestrita"
 
 function Layout() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function Layout() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/areaRestrita" element={<AreaRestrita />} />
         </Routes>
       </>
   );
