@@ -56,8 +56,13 @@ export function Login() {
       console.log("Usuário logado:", data);
   
       document.cookie = `user=${JSON.stringify(data)}; path=/; max-age=${7 * 24 * 60 * 60}`;
+
+      if (data.tipo === "admin") {
+        navigate("/arearestrita");
+      } else {
+        navigate("/perfil");
+      }
   
-      navigate("/perfil");
     } catch (error) {
       console.error("Erro:", error.message);
       alert("Erro ao fazer login. Verifique suas credenciais.");
