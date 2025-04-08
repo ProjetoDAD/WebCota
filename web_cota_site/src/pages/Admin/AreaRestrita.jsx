@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getUsers, deleteUser, atualizarUser, createUser } from './UserService';
 import "./AreaRestrita.css";
 import LoadingPopup from '../../components/Context/LoadingPopup';
@@ -6,32 +6,21 @@ import LoadingPopup from '../../components/Context/LoadingPopup';
 function AreaRestrita() {
   const [users, setUsers] = useState([]);
   const [secaoAtiva, setSecaoAtiva] = useState(null); 
-  const [novoUser, setNovoUser] = useState({ email: "", senha: "" });
+  const [novoUser, setNovoUser] = useState({
+    nomeUsuario: "",
+    celular: "",
+    email: "",
+    senha: "",
+    tipo: ""
+  });
   const [idParaDeletar, setIdParaDeletar] = useState("");
   const [novoNome, setNovoNome] = useState("");
   const [idParaAtualizar, setIdParaAtualizar] = useState("");
   const [novoEmail, setNovoEmail] = useState("");
-  const [tipo, setTipo] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
   const [novoCelular, setNovoCelular] = useState("");
   const [verificao2fatores, setVerificacao2fatores] = useState(false)
   const [loading, setLoading] = useState(false); 
-
-  // const buscarUsuarioPorId = async (id) => {
-  //   try {
-  //     // const response = await getUserById(id); 
-  //     const usuario = response.data;
-  
-  //     setNovoNome(usuario.nome || "");
-  //     setNovoEmail(usuario.email || "");
-  //     setNovaSenha(usuario.senha || "");
-  //     setNovoCelular(usuario.celular || "");
-  //     setTipo(usuario.tipo || "" );
-
-  //   } catch (error) {
-  //     console.error("Erro ao buscar usuário:", error);
-  //   }
-  // };
 
   const carregarUsuarios = async () => {
     setLoading(true)
@@ -49,7 +38,7 @@ function AreaRestrita() {
     setLoading(true)
     try {
       await createUser(novoUser);
-      setNovoUser({ email: "", senha: "" });
+      setNovoUser({ email: "", senha: "", celular: "", nomeUsuario:"", tipo: "" });
       setVerificacao2fatores(false)
       carregarUsuarios();
     } catch (error) {
@@ -73,30 +62,26 @@ function AreaRestrita() {
   };
 
   const handleUpdate = async () => {
-    setLoading(true)
-    const novoUsuario = {
-      nomeUsuario: novoNome,
-      email: novoEmail,
-      senha: novaSenha,
-      celular: novoCelular,
-      tipo: tipo
-    };
-
+    const dadosAtualizados = {};
+  
+    if (novoNome.trim() !== "") dadosAtualizados.nomeUsuario = novoNome;
+    if (novoEmail.trim() !== "") dadosAtualizados.email = novoEmail;
+    if (novaSenha.trim() !== "") dadosAtualizados.senha = novaSenha;
+    if (novoCelular.trim() !== "") dadosAtualizados.celular = novoCelular;
+    if (novoUser.tipo.trim() !== "") dadosAtualizados.tipo = novoUser.tipo;
+  
+    if (Object.keys(dadosAtualizados).length === 0) {
+      alert("Preencha ao menos um campo para atualizar.");
+      return;
+    }
+  
     try {
-      await atualizarUser(novoUsuario, idParaAtualizar);
-      setIdParaAtualizar("");
-      setNovoNome("");
-      setNovoEmail("");
-      setNovaSenha("");
-      setNovoCelular("");
-      setTipo("");
-      carregarUsuarios();
+      const response = await atualizarUser(dadosAtualizados, idParaAtualizar);
     } catch (error) {
-      console.error("Erro ao atualizar usuário:", error);
-    } finally {
-        setLoading(false)
+      console.error(error);
     }
   };
+  
 
   return (
     <>
@@ -203,13 +188,13 @@ function AreaRestrita() {
                     onChange={(e) => setNovoUser({ ...novoUser, senha: e.target.value })}
                 />
                 <select
-                    value={tipo.tipo}
-                    onChange={(e) => setTipo({ ...tipo, tipo: e.target.value })}>
-                    <option value="">Selecione o tipo de usuário</option>
-                    <option value="admin">admin</option>
-                    <option value="comum">usuario</option>
+                  value={novoUser.tipo}
+                  onChange={(e) => setNovoUser({ ...novoUser, tipo: e.target.value })}
+                >
+                  <option value="">Selecione o tipo</option>
+                  <option value="admin">admin</option>
+                  <option value="usuario">usuario</option>
                 </select>
-                
                 <button onClick={handleCreate}>Criar</button>
                 </div>
             )}
@@ -263,11 +248,12 @@ function AreaRestrita() {
                   onChange={(e) => setNovoCelular(e.target.value)}
                 />
                 <select
-                    value={tipo.tipo}
-                    onChange={(e) => setTipo({ ...tipo, tipo: e.target.value })}>
-                    <option value="">Selecione o tipo de usuário</option>
-                    <option value="admin">admin</option>
-                    <option value="comum">usuario</option>
+                  value={novoUser.tipo}
+                  onChange={(e) => setNovoUser({ ...novoUser, tipo: e.target.value })}
+                >
+                  <option value="">Selecione o tipo</option>
+                  <option value="admin">admin</option>
+                  <option value="comum">usuario</option>
                 </select>
                 <button onClick={handleUpdate}>Atualizar</button>
               </div>
