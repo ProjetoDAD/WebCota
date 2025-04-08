@@ -46,4 +46,18 @@
         if (!res.ok) throw new Error('Erro ao atualizar usuário');
         return await res.json();
     }
+
+    export async function getUserById(id) {
+        const res = await fetch("https://webcotabackend.onrender.com/users", {
+            method: "GET",
+            headers: {
+            "id": id,
+            "Content-Type": "application/json",
+            },
+            credentials: "include"
+        });
+
+        if (!res.ok) throw new Error('Erro ao buscar usuário');
+        return await res.json();
+    }
     

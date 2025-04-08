@@ -11,25 +11,27 @@ function AreaRestrita() {
   const [novoNome, setNovoNome] = useState("");
   const [idParaAtualizar, setIdParaAtualizar] = useState("");
   const [novoEmail, setNovoEmail] = useState("");
-  const [tipoUsuario, setTipoUsuario] = useState("");
+  const [tipo, setTipo] = useState("");
   const [novaSenha, setNovaSenha] = useState("");
   const [novoCelular, setNovoCelular] = useState("");
+  const [verificao2fatores, setVerificacao2fatores] = useState(false)
   const [loading, setLoading] = useState(false); 
 
-  const buscarUsuarioPorId = async (id) => {
-    try {
-      const response = await getUserById(id); 
-      const usuario = response.data;
+  // const buscarUsuarioPorId = async (id) => {
+  //   try {
+  //     // const response = await getUserById(id); 
+  //     const usuario = response.data;
   
-      setNovoNome(usuario.nome || "");
-      setNovoEmail(usuario.email || "");
-      setNovaSenha(usuario.senha || "");
-      setNovoCelular(usuario.celular || "");
-      setTipoUsuario({ tipoUsuario: usuario.tipoUsuario || "" });
-    } catch (error) {
-      console.error("Erro ao buscar usuário:", error);
-    }
-  };
+  //     setNovoNome(usuario.nome || "");
+  //     setNovoEmail(usuario.email || "");
+  //     setNovaSenha(usuario.senha || "");
+  //     setNovoCelular(usuario.celular || "");
+  //     setTipo(usuario.tipo || "" );
+
+  //   } catch (error) {
+  //     console.error("Erro ao buscar usuário:", error);
+  //   }
+  // };
 
   const carregarUsuarios = async () => {
     setLoading(true)
@@ -48,6 +50,7 @@ function AreaRestrita() {
     try {
       await createUser(novoUser);
       setNovoUser({ email: "", senha: "" });
+      setVerificacao2fatores(false)
       carregarUsuarios();
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
@@ -76,7 +79,7 @@ function AreaRestrita() {
       email: novoEmail,
       senha: novaSenha,
       celular: novoCelular,
-      tipoUsuario: tipoUsuario,
+      tipo: tipo
     };
 
     try {
@@ -86,7 +89,7 @@ function AreaRestrita() {
       setNovoEmail("");
       setNovaSenha("");
       setNovoCelular("");
-      setTipoUsuario("");
+      setTipo("");
       carregarUsuarios();
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error);
@@ -149,6 +152,7 @@ function AreaRestrita() {
                         <li>Email: {user.email}</li>
                         <li>Senha: {user.senha}</li>
                         <li>Celular: {user.celular}</li>
+                        <li>Tipo usuário: {user.tipo}</li>
                         </div>
                     ))}   
                 </ul>
@@ -199,8 +203,8 @@ function AreaRestrita() {
                     onChange={(e) => setNovoUser({ ...novoUser, senha: e.target.value })}
                 />
                 <select
-                    value={tipoUsuario.tipoUsuario}
-                    onChange={(e) => setTipoUsuario({ ...tipoUsuario, tipoUsuario: e.target.value })}>
+                    value={tipo.tipo}
+                    onChange={(e) => setTipo({ ...tipo, tipo: e.target.value })}>
                     <option value="">Selecione o tipo de usuário</option>
                     <option value="admin">admin</option>
                     <option value="comum">usuario</option>
@@ -259,8 +263,8 @@ function AreaRestrita() {
                   onChange={(e) => setNovoCelular(e.target.value)}
                 />
                 <select
-                    value={tipoUsuario.tipoUsuario}
-                    onChange={(e) => setTipoUsuario({ ...tipoUsuario, tipoUsuario: e.target.value })}>
+                    value={tipo.tipo}
+                    onChange={(e) => setTipo({ ...tipo, tipo: e.target.value })}>
                     <option value="">Selecione o tipo de usuário</option>
                     <option value="admin">admin</option>
                     <option value="comum">usuario</option>
