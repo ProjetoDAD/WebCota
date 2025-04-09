@@ -36,6 +36,9 @@
             width: 80%;
           }
           button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 120px;
             height: 30px;
             border-radius: 10px;
@@ -44,6 +47,9 @@
             transition: ease-in-out 0.1s;
             border: transparent;
             cursor: pointer;
+            p{
+              font-size: 10px;
+            }
           }
           button:hover{
             background-color: #358EBA;

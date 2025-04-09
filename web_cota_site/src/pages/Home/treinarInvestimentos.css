@@ -66,6 +66,7 @@
   #simulacao{
     display: flex;
     /* border: solid red 10px; */
+    justify-content: center;
     width: 100vw;
     height: 90vh;
     #formsSimulacao{

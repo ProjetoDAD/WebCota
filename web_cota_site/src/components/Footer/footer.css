@@ -31,9 +31,10 @@
   button.outline {
     background: transparent;
     border: 2px solid #0E233E;
+    color: #0E233E;
   }
   
-  button:hover {
+  button.outline:hover {
     background:  #0E233E;
     color: white;
   }
