@@ -53,9 +53,15 @@
     }
   }
 
-  #tituloTal{
+  .titulo_section{
     margin-left: 130px ;
     margin-top: 70px;
     margin-bottom: 20px;
   }
-  
+.titulo_section{
+   
+      margin-left: 130px ;
+      margin-top: 70px;
+      margin-bottom: 20px;
+    
+  }

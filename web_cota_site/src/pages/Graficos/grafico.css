@@ -10,3 +10,15 @@
         color:#0E233E;
       }
 }
+.fitaAcoes{
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    h1{
+        font-size: 3vw;
+        color:#0E233E;
+      }
+}

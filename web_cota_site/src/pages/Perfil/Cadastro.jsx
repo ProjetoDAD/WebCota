@@ -113,7 +113,7 @@ function Cadastro() {
                 </p>
             </div>
             <div style={{ position: "relative", top: "35%", right: "24.5%" }}>
-                <button onClick={() => navigate("/")}>
+                <button onClick={() => navigate("/")} id="voltar_inicio">
                     <img src={inicialImg} alt="voltarInicial"/>
                 </button>
             </div>

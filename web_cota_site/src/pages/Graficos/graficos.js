@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
 import "../../components/AboveTheFold/aboveTheFold.css"
 import AboveTheFold from "../../components/AboveTheFold/aboveTheFold"
@@ -99,6 +98,8 @@ function TradingViewWidget() {
     []
   );
 
+  
+
   return (
     <div className="grafico">
         <h1>Veja as principais Ações</h1>
@@ -109,12 +110,54 @@ function TradingViewWidget() {
   );
 }
 
+export function TradingViewTickerTape() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!containerRef.current){
+      return;
+  }else if(containerRef.current.querySelector("script")){
+      return;
+  }
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.textContent = JSON.stringify({
+      symbols: [
+        { proName: "FOREXCOM:SPXUSD", title: "S&P 500 Index" },
+        { proName: "FOREXCOM:NSXUSD", title: "US 100 Cash CFD" },
+        { proName: "FX_IDC:EURUSD", title: "EUR to USD" },
+        { proName: "BITSTAMP:BTCUSD", title: "Bitcoin" },
+        { proName: "BITSTAMP:ETHUSD", title: "Ethereum" },
+        { description: "", proName: "BMFBOVESPA:JBSS3" },
+        { description: "", proName: "NASDAQ:NVDA" },
+      ],
+      showSymbolLogo: true,
+      isTransparent: false,
+      displayMode: "adaptive",
+      colorTheme: "light",
+      locale: "br",
+    });
+
+    containerRef.current.appendChild(script);
+  }, []);
+
+  return (
+    <div className="fitaAcoes">
+      <h1>Principais Ações</h1>
+      <div className="tradingview-widget-container" ref={containerRef}></div>
+    </div>
+  );
+}
+
 
 export default function Graficos() {
   return (
       <>
-      <AboveTheFold imagem={imagem} texto={"Simule seus investimentos conosco"}/>
+      <TradingViewTickerTape/>
       <TradingViewWidget/>
+
       <Footer/>
       </>
   );
