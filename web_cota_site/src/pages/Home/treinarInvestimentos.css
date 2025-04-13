@@ -62,10 +62,8 @@
       }
     }
   }
-  /* Estilização do formulário na aba de simulação de investimento*/
   #simulacao{
     display: flex;
-    /* border: solid red 10px; */
     justify-content: center;
     width: 100vw;
     height: 90vh;
@@ -84,8 +82,10 @@
         align-items: center;
         form{
           display: flex;
+          position: relative;
           flex-direction: column;
           height: 95%;
+          right: 150px;
         }
         form #tipoInvest{
           display: flex;
@@ -102,29 +102,22 @@
               input{
                 display: none;
               }
-              label{
-                border: solid lightgray 2px;  
+              label {
+                border: solid lightgray 2px;
                 background-color: white;
                 border-radius: 15px;
                 display: flex;
                 align-items: center;
                 padding: 7px;
                 cursor: pointer;
-                a{
-                  padding:2px;
-                  font-size: 80%;
-                  color: black;
-                  text-decoration: none;
-                }
                 transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
               }
-              label:target{
+              
+              label.selected {
                 background-color: #65BCE6;
                 border: solid lightblue 2px;
-                a{
-                  color:white;
-                }
-              }
+                color: white;
+              }              
             }
           }
         }
@@ -137,22 +130,39 @@
           color: white;
           input{
             border-radius: 8px;
-            width: 120%;
+            width: 200%;
             height: 8%;
           }
           input:focus {
             border-color: #007bff;
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
           }
+          
         }
       }
+    }
+
+    #simularBotao{
+      color: black;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    #simularBotao:hover{
+      color: white;
+      transition: 0.2s;
+      background-color: #007bff;
+      border: none;
     }
   
     #formulario{
       width: 50%;
       display: flex;
     }
+
   }
+
   #gerarPdf{
     display: flex;
     border-radius: 15px;
