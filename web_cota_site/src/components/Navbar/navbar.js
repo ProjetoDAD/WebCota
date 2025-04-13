@@ -11,7 +11,7 @@ function NavBar() {
                     <li class="links"><Link to="/graficos" className="meu-link">Gráficos</Link></li>
                     <li class="links"><Link to="/perfil" className="meu-link">Perfil</Link></li>
                     <li >
-                      <div id="hamburguer"v>
+                      <div id="hamburguer">
                         &#9776; 
                       </div>
                     </li>

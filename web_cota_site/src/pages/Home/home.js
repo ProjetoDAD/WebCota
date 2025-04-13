@@ -86,7 +86,7 @@ function TreinarInvestimento(){
 function SimularInvestimento() {
   return(
   <>
-      <div id="tituloTal">
+      <div class="titulo_section">
         <h1>Faça sua Simulação</h1>
         <h3 style={{
           fontWeight: 200
@@ -143,7 +143,7 @@ function Card_Longo_Prazo({porcentagem}){
                 <h2>CDB - Certificado de Depósito Bancário</h2>
                 <div class="barra-exterior">
                     <div class="barra-interior"></div>
-                    <p>{}/100</p>
+                    <p>{porcentagem}/100</p>
                 </div>
             </div>
              <div class="text-card">
@@ -157,8 +157,8 @@ function Card_Longo_Prazo({porcentagem}){
 function InvestimentoLongoPrazo(){
   return <>
             <div className="titulo_section">
-            <h1 id="tituloSession">Invista a longo tempo</h1>
-            <p id="subtituloSession">produtos de renda fixa</p>
+            <h1 id="tituloSection">Invista a longo tempo</h1>
+            <p id="subtituloSection">produtos de renda fixa</p>
             </div>
             <section id="rendaFixa">
                 <Card_Longo_Prazo porcentagem={50}/>
