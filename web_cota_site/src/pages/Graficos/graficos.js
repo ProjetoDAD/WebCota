@@ -102,7 +102,7 @@ function TradingViewWidget() {
 
   return (
     <div className="grafico">
-        <h1>Veja as principais Ações</h1>
+        <h1>Gráficos das Ações</h1>
         <div className="tradingview-widget-container" ref={container}>
         </div>
         
@@ -145,7 +145,7 @@ export function TradingViewTickerTape() {
 
   return (
     <div className="fitaAcoes">
-      <h1>Principais Ações</h1>
+      <h1>Ações</h1>
       <div className="tradingview-widget-container" ref={containerRef}></div>
     </div>
   );

@@ -10,6 +10,9 @@ import "./invistaSeuJeito.css"
 import "./index.css"
 import "./produtosRendaFixa.css"
 import "./treinarInvestimentos.css"
+import { useRef, useState } from "react";
+import jsPDF from "jspdf";
+
 
 function ColocarImagem({imagem, texto}){
   
@@ -84,72 +87,155 @@ function TreinarInvestimento(){
     )
 }
 function SimularInvestimento() {
-  return(
-  <>
-      <div class="titulo_section">
+  const [formData, setFormData] = useState({
+    tipoInvest: '',
+    investir: '',
+    deposito: '',
+    tempo: '',
+  });
+
+  const formRef = useRef();
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'radio' ? (checked ? value : prev[name]) : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const doc = new jsPDF();
+
+    doc.text("Simulação de Investimento", 20, 20);
+    doc.text(`Tipo de Investimento: ${formData.tipoInvest}`, 20, 40);
+    doc.text(`Valor Inicial: R$ ${formData.investir}`, 20, 50);
+    doc.text(`Depósito Mensal: R$ ${formData.deposito}`, 20, 60);
+    doc.text(`Tempo (meses): ${formData.tempo}`, 20, 70);
+
+    doc.save("simulacao_investimento.pdf");
+  };
+
+  return (
+    <>
+      <div className="titulo_section">
         <h1>Faça sua Simulação</h1>
-        <h3 style={{
-          fontWeight: 200
-        }}>Preencha corretamente</h3>
+        <h3 style={{ fontWeight: 200 }}>Preencha corretamente</h3>
       </div>
-    <section id="simulacao">
+      <section id="simulacao">
         <div id="formsSimulacao">
-      <div id="formulario">
-        <form>
-          <div id="tipoInvest">
+          <div id="formulario">
+            <form ref={formRef} onSubmit={handleSubmit}>
+            <div id="tipoInvest">
             <ul>
               <li>
-                <input type="radio" name="tipoInvest" value="LCI/LCA" />
-                <label id="opcao1"><a href="#opcao1">LCI/LCA</a></label>
+                <input
+                  type="radio"
+                  name="tipoInvest"
+                  value="LCI/LCA"
+                  id="input1"
+                  onChange={handleChange}
+                />
+                <label
+                  id="opcao1"
+                  htmlFor="input1"
+                  className={formData.tipoInvest === "LCI/LCA" ? "selected" : ""}
+                >
+                  LCI/LCA
+                </label>
               </li>
               <li>
-                <input type="radio" name="tipoInvest" value="CDB" />
-                <label id="opcao2"><a href="#opcao2">CDB</a></label>
+                <input
+                  type="radio"
+                  name="tipoInvest"
+                  value="CDB"
+                  id="input2"
+                  onChange={handleChange}
+                />
+                <label
+                  id="opcao2"
+                  htmlFor="input2"
+                  className={formData.tipoInvest === "CDB" ? "selected" : ""}
+                >
+                  CDB
+                </label>
               </li>
               <li>
-                <input type="radio" name="tipoInvest" value="Tesouro Direto" />
-                <label id="opcao3"><a href="#opcao3">Tesouro Direto</a></label>
+                <input
+                  type="radio"
+                  name="tipoInvest"
+                  value="Tesouro Direto"
+                  id="input3"
+                  onChange={handleChange}
+                />
+                <label
+                  id="opcao3"
+                  htmlFor="input3"
+                  className={formData.tipoInvest === "Tesouro Direto" ? "selected" : ""}
+                >
+                  Tesouro Direto
+                </label>
               </li>
             </ul>
-          
           </div>
-          <div id="inputs">
-            <label htmlFor="investir">Quanto gostaria de investir?</label> 
-            <input type="number" id="investir" name="investir" />
+              <div id="inputs">
+                <label htmlFor="investir">Quanto gostaria de investir?</label>
+                <input
+                  type="number"
+                  id="investir"
+                  name="investir"
+                  onChange={handleChange}
+                />
 
-            <label htmlFor="deposito">Quanto gostaria de depositar por mês?</label> 
-            <input type="number" id="deposito" name="deposito" />
+                <label htmlFor="deposito">Quanto gostaria de depositar por mês?</label>
+                <input
+                  type="number"
+                  id="deposito"
+                  name="deposito"
+                  onChange={handleChange}
+                />
 
-            <label htmlFor="tempo">Por quanto tempo deixaria o dinheiro investido?</label> 
-            <input type="number" id="tempo" name="tempo" />
+                <label htmlFor="tempo">Por quanto tempo deixaria o dinheiro investido?</label>
+                <input
+                  type="number"
+                  id="tempo"
+                  name="tempo"
+                  onChange={handleChange}
+                />
 
-            <input type="submit" value="Simular" />
+                <input type="submit" value="Simular" id="simularBotao" />
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div id="gerarPdf">
-        <h1>Seu PDF</h1>
-      </div>
-    </div>
-    </section>
+          <div id="gerarPdf">
+            <h1>Seu PDF</h1>
+          </div>
+        </div>
+      </section>
     </>
-    );
-  
+  );
 }
-function Card_Longo_Prazo({porcentagem}){
+
+function Card_Longo_Prazo({porcentagem, titulo, descricao}){
     return(
         <div class="produtos">
             <div class="barra">
-                <h2>CDB - Certificado de Depósito Bancário</h2>
+                <h2>{titulo}</h2>
+              <p style={{
+                color:"white",
+                position: "relative",
+                right: "30px",
+                top:"40px"
+              }}>Participação de mercado</p>
                 <div class="barra-exterior">
-                    <div class="barra-interior"></div>
-                    <p>{porcentagem}/100</p>
+                <div className="barra-interior"></div>
+                <p>{porcentagem}/100</p>
                 </div>
             </div>
              <div class="text-card">
-                <h3>Title</h3>
-                    <p>Please add your content here. Keep it short and simple. And smile.
-                    Please add your content here. Keep it short and simple. And smile.</p>
+                <h3>Descrição</h3>
+                    <p>{descricao}</p>
             </div>
         </div>
     )
@@ -158,12 +244,24 @@ function InvestimentoLongoPrazo(){
   return <>
             <div className="titulo_section">
             <h1 id="tituloSection">Invista a longo tempo</h1>
-            <p id="subtituloSection">produtos de renda fixa</p>
+            <p id="subtituloSection">Produtos de renda fixa</p>
             </div>
             <section id="rendaFixa">
-                <Card_Longo_Prazo porcentagem={50}/>
-                <Card_Longo_Prazo porcentagem={90}/>
-                <Card_Longo_Prazo porcentagem={43}/>
+            <Card_Longo_Prazo
+              porcentagem={50}
+              titulo="Tesouro Selic"
+              descricao="Indicado para reserva de emergência, com alta liquidez e segurança."
+            />
+            <Card_Longo_Prazo
+              porcentagem={90}
+              titulo="CDB de Longo Prazo"
+              descricao="Oferece rentabilidade atrelada ao CDI, ideal para metas acima de 2 anos."
+            />
+            <Card_Longo_Prazo
+              porcentagem={43}
+              titulo="LCI Imobiliária"
+              descricao="Isento de IR, ótimo para diversificar e ter retorno acima da poupança."
+            />
             </section>
         </>
 }
