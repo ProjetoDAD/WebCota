@@ -4,6 +4,7 @@
         if (!res.ok) throw new Error('Erro ao buscar usuários');
         return await res.json();
     }
+    
   
     export async function deleteUser(id) {
         const res = await fetch(`https://webcotabackend.onrender.com/users/delete`, {
@@ -46,4 +47,5 @@
         if (!res.ok) throw new Error('Erro ao atualizar usuário');
         return await res.json();
     }
+
     

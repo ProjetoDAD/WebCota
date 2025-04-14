@@ -154,6 +154,7 @@
     }
   }
   #gerarPdf{
+    flex-direction: column;
     display: flex;
     border-radius: 15px;
     width: 500px;
