@@ -16,21 +16,6 @@ function AreaRestrita() {
   const [novoCelular, setNovoCelular] = useState("");
   const [loading, setLoading] = useState(false); 
 
-  // const buscarUsuarioPorId = async (id) => {
-  //   try {
-  //     const response = await getUserById(id); 
-  //     const usuario = response.data;
-  
-  //     setNovoNome(usuario.nome || "");
-  //     setNovoEmail(usuario.email || "");
-  //     setNovaSenha(usuario.senha || "");
-  //     setNovoCelular(usuario.celular || "");
-  //     setTipoUsuario({ tipoUsuario: usuario.tipoUsuario || "" });
-  //   } catch (error) {
-  //     console.error("Erro ao buscar usuário:", error);
-  //   }
-  // };
-
   const carregarUsuarios = async () => {
     setLoading(true)
     try {

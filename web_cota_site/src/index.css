@@ -12,7 +12,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* Estilização da navbar */
 *{
   margin: 0;
 }
@@ -70,7 +69,6 @@ html{
   }
   
   
-/* Estilização do texto e imagem na landing page */
 }
 #imagemTexto{
   div{
@@ -111,7 +109,6 @@ html{
   }
 }
 
-/* Estilização da seção "Invista do seu jeito" */
 
 #invistaSeuJeito{
   height: 80vh;
@@ -185,7 +182,6 @@ html{
   }
 }
 
-/* Estilização das informações na sessão "Treine seus investimentos" */
 
 #treinarInvestimento{
   display: flex;
@@ -250,7 +246,6 @@ html{
     }
   }
 }
-/* Estilização do formulário na aba de simulação de investimento*/
 #simulacao{
   display: flex;
   width: 100vw;
@@ -263,7 +258,6 @@ html{
       display: flex;
       height: 100%;
       flex-direction: column ;
-      justify-content:;
       form #tipoInvest{
         background-color: lightblue;
         ul{
@@ -275,8 +269,6 @@ html{
               display: none;
             }
             label{
-              /* width: 10px; */
-              /* padding: 2px; */
               border: solid black 2px;
               background-color: white;
               border-radius: 20px;

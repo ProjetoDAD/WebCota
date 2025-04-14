@@ -62,10 +62,8 @@
       }
     }
   }
-  /* Estilização do formulário na aba de simulação de investimento*/
   #simulacao{
     display: flex;
-    /* border: solid red 10px; */
     justify-content: center;
     width: 100vw;
     height: 90vh;
@@ -137,7 +135,7 @@
           color: white;
           input{
             border-radius: 8px;
-            width: 120%;
+            width: 150%;
             height: 8%;
           }
           input:focus {
@@ -164,4 +162,24 @@
     justify-content: center;
   
   }
+
+  input[type="radio"]:checked + label {
+    background-color: rgb(116, 184, 247) !important;
+    color: black;
+    border-color: rgb(173, 212, 248) !important;
+  }
+
+  #simularBotao:hover {
+    transition: 0.2s;
+    background-color: #007bff;
+    color: white;
+    border: #65BCE6 1px solid;
+  }
+
+  #simularBotao{
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  
   

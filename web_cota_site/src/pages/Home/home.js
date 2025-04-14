@@ -13,6 +13,7 @@ import "./invistaSeuJeito.css";
 import "./index.css";
 import "./produtosRendaFixa.css";
 import "./treinarInvestimentos.css";
+import { display } from "html2canvas"
 
 function ColocarImagem({ imagem, texto }) {
   return (
@@ -35,7 +36,7 @@ function Card({ nome, texto, imagem }) {
       <div className="informacoes">
         <h1>{nome}</h1>
         <p>{texto}</p>
-        <button>descubra mais</button>
+        <button>Descubra mais</button>
       </div>
       <img src={imagem} alt={nome} />
     </div>
@@ -88,19 +89,16 @@ function TreinarInvestimento() {
 
 function SimularInvestimento() {
   const chartRef = useRef(null);
-  const chartInstanceRef = useRef(null); // Armazena a instância do gráfico
+  const chartInstanceRef = useRef(null);
   const [graficoData, setGraficoData] = useState([]);
 
-  // Criação do gráfico
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
 
-    // Destroi gráfico anterior
     if (chartInstanceRef.current) {
       chartInstanceRef.current.destroy();
     }
 
-    // Dados padrões se não houver dados de simulação
     const labels = ["0", "6 meses", "1 ano", "2 anos", "3 anos"];
     const dados = graficoData.length > 0 ? graficoData : [1000, 1200, 1600, 2200, 3000];
 
@@ -133,7 +131,6 @@ function SimularInvestimento() {
     };
   }, [graficoData]);
 
-  // Lógica para simular juros compostos
   const calcularInvestimento = (valorInicial, depositoMensal, tempoMeses, taxaJurosMensal) => {
     const valores = [];
     let montante = parseFloat(valorInicial);
@@ -158,11 +155,10 @@ function SimularInvestimento() {
     const deposito = parseFloat(document.getElementById("deposito").value || 0);
     const tempo = parseInt(document.getElementById("tempo").value || 0);
 
-    // Taxa de juros mensal estimada por tipo
     const taxas = {
-      "LCI/LCA": 0.009, // 0.9% ao mês
-      "CDB": 0.012,     // 1.2% ao mês
-      "Tesouro Direto": 0.01, // 1% ao mês
+      "LCI/LCA": 0.009, 
+      "CDB": 0.012,     
+      "Tesouro Direto": 0.01, 
     };
 
     const taxaJurosMensal = taxas[tipoInvest] || 0.01;
@@ -170,7 +166,6 @@ function SimularInvestimento() {
     const dadosSimulados = calcularInvestimento(investir, deposito, tempo, taxaJurosMensal);
     setGraficoData(dadosSimulados);
 
-    // Geração do PDF
     const doc = new jsPDF();
     doc.setFontSize(20);
     doc.text("Simulação de Investimento", 20, 20);
@@ -181,7 +176,6 @@ function SimularInvestimento() {
     doc.text(`Tempo: ${tempo} meses`, 20, 70);
     doc.text(`Taxa de Juros Mensal Estimada: ${(taxaJurosMensal * 100).toFixed(2)}%`, 20, 80);
 
-    // Captura do gráfico
     const canvas = chartRef.current;
     const canvasImage = await html2canvas(canvas);
     const imgData = canvasImage.toDataURL("image/png");
@@ -194,7 +188,7 @@ function SimularInvestimento() {
     <>
       <div className="titulo_section">
         <h1 id="tituloSession">Faça a sua simulação</h1>
-        <p id="subtituloSession">preencha corretamente</p>
+        <p id="subtituloSession">Preencha corretamente</p>
       </div>
       <section id="simulacao">
         <div id="formsSimulacao">
@@ -203,16 +197,16 @@ function SimularInvestimento() {
               <div id="tipoInvest">
                 <ul>
                   <li>
-                    <input type="radio" name="tipoInvest" value="LCI/LCA" />
-                    <label>LCI/LCA</label>
+                    <input type="radio" id="lci" name="tipoInvest" value="LCI/LCA" />
+                    <label htmlFor="lci">LCI/LCA</label>
                   </li>
                   <li>
-                    <input type="radio" name="tipoInvest" value="CDB" />
-                    <label>CDB</label>
+                    <input type="radio" id="cdb" name="tipoInvest" value="CDB" />
+                    <label htmlFor="cdb">CDB</label>
                   </li>
                   <li>
-                    <input type="radio" name="tipoInvest" value="Tesouro Direto" />
-                    <label>Tesouro Direto</label>
+                    <input type="radio" id="tesouro" name="tipoInvest" value="Tesouro Direto" />
+                    <label htmlFor="tesouro">Tesouro Direto</label>
                   </li>
                 </ul>
               </div>
@@ -226,7 +220,7 @@ function SimularInvestimento() {
                 <label htmlFor="tempo">Por quanto tempo deixaria o dinheiro investido? (em meses)</label>
                 <input type="number" id="tempo" name="tempo" />
 
-                <input type="submit" value="Simular" />
+                <input id="simularBotao" type="submit" value="Simular" />
               </div>
             </form>
           </div>
@@ -246,7 +240,7 @@ function SimularInvestimento() {
 }
 
 
-function Card_Longo_Prazo({ porcentagem, titulo,  }) {
+function Card_Longo_Prazo({ porcentagem, titulo, mensagem }) {
   return (
     <div className="produtos">
       <div className="barra">
@@ -257,8 +251,8 @@ function Card_Longo_Prazo({ porcentagem, titulo,  }) {
         </div>
       </div>
       <div className="text-card">
-        <h3>title</h3>
-        <p>Please add your content here. Keep it short and simple. And smile.</p>
+        <h3>Descrição</h3>
+        <p>{mensagem}</p>
       </div>
     </div>
   );
@@ -269,12 +263,12 @@ function InvestimentoLongoPrazo() {
     <>
       <div className="titulo_section">
         <h1 id="tituloSession">Invista a longo tempo</h1>
-        <p id="subtituloSession">produtos de renda fixa</p>
+        <p id="subtituloSession">Produtos de renda fixa</p>
       </div>
       <section id="rendaFixa">
-        <Card_Longo_Prazo porcentagem={50} titulo={"CDB - Certificado de Depósito Bancário"}/>
-        <Card_Longo_Prazo porcentagem={90} titulo={"Tesouro Direto - IPCA"}/>
-        <Card_Longo_Prazo porcentagem={43} titulo={"FIIs - Fundos Imobiliários"}/>
+        <Card_Longo_Prazo porcentagem={50} titulo={"CDB - Certificado de Depósito Bancário"} mensagem={"Um título emitido por bancos para captar dinheiro dos investidores. Em troca, o banco paga juros sobre esse valor."}/>
+        <Card_Longo_Prazo porcentagem={90} titulo={"Tesouro Direto - IPCA"} mensagem={"Título público emitido pelo governo, que acompanha a inflação (IPCA) + uma taxa fixa."}/>
+        <Card_Longo_Prazo porcentagem={43} titulo={"FIIs - Fundos Imobiliários"} mensagem={"Fundos que investem em imóveis físicos (como shoppings e galpões) ou em títulos ligados ao setor."}/>
       </section>
     </>
   );
@@ -288,7 +282,7 @@ function Rodape() {
         <p>WebCota o melhor treino para o sucesso no investimento</p>
         <div className="rodape-buttons">
           <button className="outline">Doação</button>
-          <button className="solid">Cadastrar</button>
+          <button className="solid" style={{textDecoration:"none"}}><a href="/cadastro" >Cadastrar</a></button>
         </div>
       </div>
     </section>
