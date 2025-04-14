@@ -239,7 +239,6 @@ function SimularInvestimento() {
   );
 }
 
-
 function Card_Longo_Prazo({ porcentagem, titulo, mensagem }) {
   return (
     <div className="produtos">

@@ -106,9 +106,9 @@
   }
 
   #botaoLogout{
-    position: relative;
-    bottom: 500px;
-    left: 177vh;
+    position: fixed;
+    bottom: 630px;
+    left: 190vh;
   }
   
   .info-privada {
@@ -135,7 +135,7 @@
     cursor: pointer;
     margin: 10px;
     transition: 0.5s;
-    background-color: white;
+    background-color: rgb(187, 185, 185);
   }
   
   .status-button {

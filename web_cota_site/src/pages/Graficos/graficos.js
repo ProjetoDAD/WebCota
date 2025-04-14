@@ -144,7 +144,7 @@ export function TradingViewTickerTape() {
 
   return (
     <div className="fitaAcoes">
-      <h1>Principais Ações</h1>
+      <h1>Ações</h1>
       <div className="tradingview-widget-container" ref={containerRef}></div>
       <br></br>
     </div>
