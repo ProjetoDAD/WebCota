@@ -1,4 +1,3 @@
-/* Estilização do texto e imagem na landing page */
 #imagemTexto{
   div{
     display: flex;
@@ -15,7 +14,7 @@
       align-items: center;
       h1{
         width: 25vw;
-        font-size: 4.0vw;
+        font-size: 3.0vw;
         span{
           color: #358EBA;
         }

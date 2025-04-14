@@ -13,7 +13,7 @@ function Cadastro() {
         confirmarSenha: ""
     });
 
-    const [error, setError] = useState(""); // Estado para erro
+    const [error, setError] = useState(""); 
     const navigate = useNavigate(); 
   
     const handleChange = (e) => {
@@ -22,7 +22,7 @@ function Cadastro() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(""); // Limpa o erro anterior
+        setError(""); 
 
         if (formData.senha !== formData.confirmarSenha) {
             setError("As senhas não coincidem!");
@@ -64,7 +64,7 @@ function Cadastro() {
     
             <div className="form-section">
                 <h2 style={{ fontSize: "40px" }}><strong>Cadastre-se</strong></h2>
-                {error && <p className="error-message">{error}</p>} {/* Exibe erro, se houver */}
+                {error && <p className="error-message">{error}</p>} 
                 <form onSubmit={handleSubmit} className="cadastro-form">
                     <input
                         type="text"

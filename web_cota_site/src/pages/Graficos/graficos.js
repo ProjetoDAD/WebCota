@@ -5,7 +5,6 @@ import "../../components/AboveTheFold/aboveTheFold.css"
 import AboveTheFold from "../../components/AboveTheFold/aboveTheFold"
 import imagem from "../../assets/pana.svg"
 import "./grafico.css"
-// TradingViewWidget.jsx
 import { useEffect, useRef, memo } from 'react';
 
 function TradingViewWidget() {
@@ -102,10 +101,10 @@ function TradingViewWidget() {
 
   return (
     <div className="grafico">
-        <h1>Gráficos das Ações</h1>
+        <h1>Gráfico das ações</h1>
         <div className="tradingview-widget-container" ref={container}>
         </div>
-        
+        <br></br>        
     </div>
   );
 }
@@ -147,7 +146,9 @@ export function TradingViewTickerTape() {
     <div className="fitaAcoes">
       <h1>Ações</h1>
       <div className="tradingview-widget-container" ref={containerRef}></div>
+      <br></br>
     </div>
+    
   );
 }
 
@@ -157,7 +158,6 @@ export default function Graficos() {
       <>
       <TradingViewTickerTape/>
       <TradingViewWidget/>
-
       <Footer/>
       </>
   );

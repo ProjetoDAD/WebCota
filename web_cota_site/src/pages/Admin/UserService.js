@@ -9,6 +9,7 @@ const BASE_URL = 'https://webcotabackend.onrender.com';
         }
         return await res.json();
     }
+    
   
     export async function deleteUser(id) {
         const res = await fetch(`${BASE_URL}/users/delete`, {
@@ -60,4 +61,5 @@ const BASE_URL = 'https://webcotabackend.onrender.com';
         }
         return await res.json();
     }
+
     

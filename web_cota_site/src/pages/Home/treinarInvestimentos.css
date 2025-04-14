@@ -130,7 +130,7 @@
           color: white;
           input{
             border-radius: 8px;
-            width: 200%;
+            width: 150%;
             height: 8%;
           }
           input:focus {
@@ -164,6 +164,7 @@
   }
 
   #gerarPdf{
+    flex-direction: column;
     display: flex;
     border-radius: 15px;
     width: 500px;
@@ -173,4 +174,24 @@
     justify-content: center;
   
   }
+
+  input[type="radio"]:checked + label {
+    background-color: rgb(116, 184, 247) !important;
+    color: black;
+    border-color: rgb(173, 212, 248) !important;
+  }
+
+  #simularBotao:hover {
+    transition: 0.2s;
+    background-color: #007bff;
+    color: white;
+    border: #65BCE6 1px solid;
+  }
+
+  #simularBotao{
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  
   

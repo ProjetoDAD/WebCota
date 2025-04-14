@@ -47,7 +47,8 @@
             transition: ease-in-out 0.1s;
             border: transparent;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
+            
           }
           button:hover{
             background-color: #358EBA;
